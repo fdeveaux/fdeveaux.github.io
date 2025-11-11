@@ -44,10 +44,17 @@
       align-items:center;
       margin-bottom:18px;
     }
-    .avatar{
-      width:96px;height:96px;border-radius:50%;
-      object-fit:cover; display:block;
-      box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(0,0,0,.05);
+   .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 10%; /* 👈 move the visible image downward */
+  display: block;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(0,0,0,.05);
+    image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: bicubic; /* for legacy Edge/IE */
+
     }
     h1{
       font-family:"Libre Baskerville", Georgia, serif;
@@ -86,13 +93,58 @@
       .avatar{width:72px;height:72px;}
       h1{font-size:1.8rem;}
     }
+    
+ /* --- Abstract styling --- */
+details {
+  margin-left: 1.2em;     /* indent */
+  font-size: 0.95em;      /* slightly smaller */
+}
+
+details summary {
+  cursor: pointer;
+  color: var(--text);      /* keep "Abstract" black */
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+details p {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+/* --- Research titles --- */
+.paper-title,
+li > a {
+  display: inline-block;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.02rem;     /* consistent size */
+  line-height: 1.4;
+  color: var(--text);
+}
+
+li > a {
+  color: var(--link);      /* linked titles are blue */
+  text-decoration: none;
+}
+
+li > a:hover, li > a:focus {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+ul li {
+  margin-bottom: 1.4em;  /* adds extra line of space between titles */
+}
+
+
   </style>
 </head>
 <body>
   <main class="wrap">
 
     <section class="header">
-      <img class="avatar" src="profile.jpg" alt="jpeg" />
+<img class="avatar" src="Fred_Dalia_Portrait.jpg" alt="Fred DeVeaux portrait" />
       <div>
         <h1>Fred DeVeaux</h1>
         <p class="subtitle">PhD Candidate · Political Science · UCLA<br>
@@ -111,30 +163,93 @@ recent advances in computational text analysis.
         I am currently on the job market.
       </p>
       <p class="quicklinks">
-        <a href="cv.pdf">CV</a>
+        <a href="https://tinyurl.com/4n6tm883">CV</a>
       </p>
     </section>
 
-    <section>
-      <h2>Research</h2>
-      <ul>
+  <section>
+  <h2>Research</h2>
+  <ul>
+    <li>
+     <a href="https://www.sciencedirect.com/science/article/abs/pii/S0261379424001203" target="_blank" rel="noopener noreferrer">
+  Do Working-Class Candidates Activate Class-Based Voting?
+</a><br>
+      With Jared Abbott. <em>Electoral Studies</em>, 2024.
+      <details>
+        <summary> Abstract</summary>
+        <p>
+         After steadily leaving the Democratic Party, working-class voters are increasingly seen as pivotal in US elections. 
+         What type of candidates should parties nominate to win over working-class voters? Parties often nominate candidates based 
+         on characteristics they think will appeal to certain groups of voters. These typically include campaign messages, 
+         such as policy positions or rhetoric, but can also include descriptive characteristics. In this paper we use a conjoint 
+         experiment to test whether candidates’ class background can activate class-based voting. Overall, we find that a candidate’s 
+         occupation has a substantial effect on voter perceptions: working-class respondents are 6.4 percentage points more likely to
+         prefer a candidate with a working-class occupation over one with an upper-class occupation. This effect is not driven by
+         inferences that respondents make about candidates’ policy positions or group-based rhetoric. Instead, we find that working-class
+         voters perceive working-class candidates as more understanding of their problems. Our results suggest that candidates’ class 
+         background is an underappreciated yet effective mechanism for activating class-based voting.
+        </p>
+      </details>
+    </li>
+
+    <li>
+<span class="paper-title">What Happens When Working-Class Candidates Run For Office?</span><br>
+      With Jared Abbott. <em>Under Review</em>
+      <details>
+        <summary> Abstract</summary>
+        <p>
+          Working-class Americans are significantly underrepresented in politics. It is unclear whether this is due to electoral disadvantages or pre-election barriers to entry. Determining whether working-class candidates are disadvantaged in elections is difficult because typically we only have occupational data for those who succeed. To address this limitation, we collect the full occupational histories from campaign websites for all 8,775 candidates who finished first or second in congressional primaries between 2010 and 2024. Using a difference-in-differences design, we find that when a party nominates a working-class candidate to the general election, it suffers a modest but persistent penalty of about 0.6 percentage points in its two-party vote share, though the probability of winning is unaffected. We then explore four possible mechanisms behind this disadvantage: working-class candidates (1) are more ideologically left-wing than their peers, (2) lack elite credentials associated with higher vote shares, (3) raise a smaller share of general election donations, and (4) attract less support from non-working-class voters than from working-class voters. These findings suggest that while general elections are not the stage at which working-class Americans are excluded from office, they nonetheless face electoral disadvantages when they run.
+        </p>
+      </details>
+    </li>
+
+    <li>
+      <span class="paper-title">Do Legislators’ Occupations Influence Their Behavior in Office?</span><br>
+      <em>Job Market Paper. Work in Progress</em>
+      <details>
+        <summary> Abstract</summary>
+        <p>
+          Compared to the population at large, the US Congress has relatively few workers and tradespeople and has many lawyers and business executives. 
+          This raises concerns about unequal representation for Americans from different occupations. Yet it remains unclear how legislators’ prior
+          careers shape their behavior in office. On one hand, occupational experience may influence legislators’ area of focus or expertise; on the other,
+          it may shape their ideological positions. To answer this question I compile the full occupational histories of all 3,459 members of Congress 
+          from 1946 to 2020.  I use a difference-in-differences design to estimate the impact of past careers in education, healthcare, the military, 
+          corporate leadership, law, finance, small business and working-class jobs on legislators' behavior once in office. I find that legislators’
+          occupations shape what issues they focus on beyond what we would expect from constituency or party: when a district elects a representative 
+          from a given occupational sector, the share of their speeches mentioning related topics increases by 19%, and the share of bills they sponsor
+          related to those issues increases by 29%. I find evidence that this focus is consistent with a theory of expertise: legislators are more 
+          effective at advancing bills related to their occupations. But legislators' occupations also predict their ideological positions: legislators
+          with experience in business are more likely to vote conservatively on a wide range of economic issues, while those with experience in blue 
+          collar or education backgrounds are less likely to vote conservatively on economic issues. Overall, these results suggest that the occupational
+          composition of Congress not only shapes which issues receive attention and expertise, but also the ideological preferences that guide policymaking.
+        </p>
+      </details>
+    </li>
+    
+
         <li>
-          <a href="#">Do Working-Class Candidates Activate Class-Based Voting?</a><br>
-          With Jared Abbott. <em>Electoral Studies</em>, 2024.
-          <a href="paper1.pdf">[PDF]</a>
-        </li>
-        <li>
-          <a href="#">Are Working-Class Candidates Less Likely to Win Elections?</a><br>
-          With Jared Abbott. <em>Under Review</em>
-          <a href="paper2.pdf">[PDF]</a>
-        </li>
-        <li>
-          <a href="#">Do Legislators' Occupations Influence Their Behavior in Office?</a><br>
-          <em>Work in Progress</em>
-          <a href="paper3.pdf">[PDF]</a>
-        </li>
-      </ul>
-    </section>
+      <span class="paper-title">Anti-Establishment Rhetoric in Congressional Campaigns</span><br>
+      With Jared Abbott. <em>Work in Progress</em>
+      <details>
+        <summary> Abstract</summary>
+        <p>
+          The past decade has witnessed a sharp rise in anti-establishment politics in the United States, but its origins remain poorly understood. 
+          Is anti-establishment sentiment primarily an ideological phenomenon of the far right and far left, or does it represent an independent dimension
+          of political conflict? Does it emerge through the entry of new outsider candidates, or through adaptation by established politicians to changing
+          voter demands? To address these questions, we construct a new dataset of more than 12,000 congressional candidates running in primary and general
+          elections between 2010 and 2024, drawing on over one million sentences scraped from their campaign websites. Using large language models and supervised
+          machine learning, we classify the degree of anti-establishment rhetoric in each candidate’s platform. We then examine how the prevalence of anti-establishment
+          appeals has evolved over time and the extent to which it reflects candidates’ ideological positions, occupational and socioeconomic backgrounds, district
+          characteristics, or strategic responses to challengers. This approach provides the first systematic portrait of the rise of anti-establishment rhetoric
+          in U.S. congressional elections and the types of candidates and contexts in which it emerges.
+        </p>
+      </details>
+    </li>
+    
+    
+    
+  </ul>
+</section>
 
     <section>
       <h2>Teaching</h2>
@@ -153,4 +268,3 @@ recent advances in computational text analysis.
   </main>
 </body>
 </html>
-
