@@ -8,6 +8,7 @@
   <!-- Fonts similar to the screenshot -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
 
+ 
   <style>
 :root{
   --bg:#f5f5f5;        /* light grey background */
@@ -44,16 +45,49 @@
       align-items:center;
       margin-bottom:18px;
     }
-   .avatar {
-  width: 96px;
-  height: 96px;
+  /* Image click-to-enlarge effect */
+.avatar {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center 10%; /* 👈 move the visible image downward */
-  display: block;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(0,0,0,.05);
-    image-rendering: -webkit-optimize-contrast;
-  -ms-interpolation-mode: bicubic; /* for legacy Edge/IE */
+  object-position: center 10%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+/* Partial overlay that appears in-place */
+.avatar-modal {
+  display: none;
+  position: absolute;       /* anchor relative to document flow */
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;              /* cover the surrounding section */
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-modal img {
+  width: 300px;             /* small enlargement */
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 10%;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+/* Active state */
+.avatar-modal.active {
+  display: flex;
+}
+
 
     }
     h1{
@@ -138,13 +172,19 @@ ul li {
 }
 
 
-</style>
+  </style>
 </head>
 <body>
   <main class="wrap">
 
     <section class="header">
-      <img class="avatar" src="Fred_Dalia_Portrait_small.jpg" alt="Fred DeVeaux portrait" />
+<div class="avatar-container">
+  <img class="avatar" src="Fred_Dalia_Portrait.jpg" alt="Fred DeVeaux portrait" onclick="document.querySelector('.avatar-modal').classList.add('active')" />
+</div>
+
+<div class="avatar-modal" onclick="this.classList.remove('active')">
+  <img src="Fred_Dalia_Portrait.jpg" alt="Fred DeVeaux portrait enlarged">
+</div>
       <div>
         <h1>Fred DeVeaux</h1>
         <p class="subtitle">PhD Candidate · Political Science · UCLA<br>
