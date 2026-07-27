@@ -143,10 +143,10 @@
       h1{font-size:1.8rem;}
     }
     
- /* --- Abstract styling --- */
+/* --- Abstract styling --- */
 details {
-  margin-left: 1.2em;     /* indent */
-  font-size: 0.95em;      /* slightly smaller */
+  margin-left: 1.2em;
+  font-size: 0.95em;
 }
 
 details summary {
@@ -157,26 +157,32 @@ details summary {
   list-style: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.35em;
+  gap: 0.4em;
 }
 
-/* Remove the default triangle */
+/* Remove the browser's native marker */
 details summary::-webkit-details-marker {
   display: none;
 }
 
-/* Show + when closed */
-details summary::after {
-  content: "+";
-  color: var(--muted);
-  font-family: Arial, sans-serif;
-  font-size: 0.9em;
-  font-weight: 400;
+details summary::marker {
+  content: "";
 }
 
-/* Show − when open */
-details[open] summary::after {
-  content: "−";
+/* Custom black disclosure arrow */
+details summary::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  border-left: 5px solid var(--text);
+  transition: transform 0.15s ease;
+}
+
+/* Turn the arrow downward when open */
+details[open] summary::before {
+  transform: rotate(90deg);
 }
 
 details p {
