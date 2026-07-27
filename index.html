@@ -151,9 +151,32 @@ details {
 
 details summary {
   cursor: pointer;
-  color: var(--text);      /* keep "Abstract" black */
+  color: var(--text);
   margin-top: 6px;
   font-weight: 500;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+/* Remove the default triangle */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Show + when closed */
+details summary::after {
+  content: "+";
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+/* Show − when open */
+details[open] summary::after {
+  content: "−";
 }
 
 details p {
@@ -264,8 +287,10 @@ ul li {
     </li>
 
     <li>
-      <span class="paper-title">Do Legislators’ Occupations Predict Their Behavior in Office?</span><br>
-      <em>Work in Progress</em>
+  <a href="Occupation_in_Office_07_19_2026" target="_blank" rel="noopener noreferrer">
+  Do Legislators’ Occupations Predict Their Behavior in Office?
+</a><br>
+      <em>Under Review</em>
       <details>
         <summary> Abstract</summary>
         <p>
